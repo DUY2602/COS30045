@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EcoEnergy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo-container" onclick="window.location.href='index.html'">
+                <img src="images/power-logo.png" alt="Power Logo" class="logo">
+                <span>EcoEnergy</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="televisions.html">Televisions</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h1>About This Project</h1>
+                    <p>A small demonstration website for COS30045 - Data Visualisation Exercise 0.2</p>
+                </div>
+
+<div class="about-content">
+    <div class="about-card">
+        <h3>Purpose</h3>
+        <p>To help Australian consumers understand and compare energy consumption of household appliances, with a special focus on televisions.</p>
+    </div>
+
+    <div class="about-card">
+        <h3>Data Sources</h3>
+        <ul class="tech-list">
+            <li>Energy Rating Label program – energyrating.gov.au</li>
+            <li>Televisions dataset (monthly CSV releases) – data.gov.au</li>
+            <li>Typical values based on 10 hours/day usage (MEPS standard)</li>
+        </ul>
+    </div>
+
+    <div class="about-card">
+        <h3>Technologies Used</h3>
+        <ul class="tech-list">
+            <li>HTML5 for semantic structure</li>
+            <li>CSS3 for responsive styling and layout</li>
+            <li>Vanilla JavaScript for interactivity</li>
+            <li>Responsive Grid & Flexbox layouts</li>
+            <li>CSS Custom Properties (Variables)</li>
+        </ul>
+    </div>
+
+    <div class="author-info">
+        <p><strong>Author:</strong> Do Duc Duy – Student ID: 105550034</p>
+        <p><strong>Course:</strong> COS30045 - Data Visualisation</p>
+        <p><strong>Assignment:</strong> Exercise 0.2 - Website Prototype</p>
+    </div>
+</div>
+
+                    <div class="about-card">
+                        <h3>Technologies Used</h3>
+                        <ul class="tech-list">
+                            <li>HTML5 for semantic structure</li>
+                            <li>CSS3 for responsive styling and layout</li>
+                            <li>Vanilla JavaScript for interactivity</li>
+                        </ul>
+                    </div>
+
+                    <div class="author-info">
+                        <p><strong>Author:</strong> Do Duc Duy – Student ID: 105550034</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© <span id="year"></span> <strong>Do Duc Duy - 105550034</strong></p>
+                <p class="small-text">Acknowledgement: GenAI tools assisted in generating code structure and content.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
