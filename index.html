@@ -5,62 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoEnergy - Smarter Energy for Australia</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Thư viện PapaParse để đọc file CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
 <body>
     <header>
-      <div class="logo-container" onclick="window.location.href='index.html'">
-        <img src="images/power-logo.png" alt="Power Logo" class="logo" />
-        <span>EcoEnergy</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="televisions.html">Televisions</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </ul>
-      </nav>
+        <div class="logo-container" onclick="switchPage('home')">
+            <img src="images/power-logo.png" alt="Power Logo" class="logo">
+            <span>EcoEnergy</span>
+        </div>
+        <nav>
+            <ul>
+                <!-- Dùng onclick thay vì href -->
+                <li><a href="#" id="nav-home" onclick="switchPage('home')" class="active">Home</a></li>
+                <li><a href="#" id="nav-tv" onclick="switchPage('tv')">Televisions</a></li>
+                <li><a href="#" id="nav-about" onclick="switchPage('about')">About Us</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <section class="hero section-padding">
-    <div class="container">
-        <h1>Smarter Energy for <span class="highlight">Australia</span></h1>
-        <p class="hero-text">Track appliance efficiency, save money, and reduce your carbon footprint with informed choices.</p>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="televisions.html" class="cta-btn">View Appliance Data</a>
-        </div>
-    </div>
-</section>
+        <!-- ================= PAGE 1: HOME ================= -->
+        <div id="page-home" class="page-section">
+            <section class="hero section-padding">
+                <div class="container">
+                    <h1>Smarter Energy for <span class="highlight">Televisions</span></h1>
+                    <p class="hero-text">Track appliance efficiency, save money, and reduce your carbon footprint with informed choices.</p>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <!-- Nút này cũng gọi hàm chuyển trang -->
+                        <button onclick="switchPage('tv')" class="cta-btn" style="border:none; cursor:pointer;">View Appliance Data</button>
+                    </div>
+                </div>
+            </section>
 
-        <section class="stats-section section-padding">
-    <div class="container">
-        <div class="section-header">
-            <h2>Why Energy Efficiency Matters</h2>
-            <p>Making informed choices about appliances can lead to significant savings and environmental benefits</p>
+            <section class="stats-section section-padding">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Why Energy Efficiency Matters</h2>
+                        <p>Making informed choices about appliances can lead to significant savings and environmental benefits</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="card highlight-card">
+                            <h3>Understand Ratings</h3>
+                            <p>Learn what the star ratings really mean for your electricity bill and long-term savings.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Save Money</h3>
+                            <p>Choosing efficient appliances can save hundreds of dollars a year on energy costs.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Reduce Carbon Footprint</h3>
+                            <p>Energy-efficient appliances help lower greenhouse gas emissions and protect the environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" style="background: var(--bg-soft); margin-top: 3rem;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>4 Key Visual Insights from KNIME</h2>
+                        <p>Selected charts exported from the workflow (COS30045 Exercise 1):</p>
+                    </div>
+                    <div class="key-charts-grid">
+                        <div class="chart-row">
+                            <div class="chart-item">
+                                <img src="images/charts/Current Available Screen Technologies in Australia.png" alt="Chart 1" class="key-chart">
+                                <p><strong>Current Available Screen Technologies in Australia</strong></p>
+                            </div>
+                            <div class="chart-item">
+                                <img src="images/charts/Relationship between Screen Size & Power Usage.png" alt="Chart 2" class="key-chart">
+                                <p><strong>Relationship between Screen Size & Power Usage</strong></p>
+                            </div>
+                        </div>
+                        <div class="chart-row">
+                            <div class="chart-item">
+                                <img src="images/charts/Models per Brand.png" alt="Chart 3" class="key-chart">
+                                <p><strong>Models per Brand</strong></p>
+                            </div>
+                            <div class="chart-item">
+                                <img src="images/charts/Mean Power Consumption per Screen Technology.png" alt="Chart 4" class="key-chart">
+                                <p><strong>Mean Power Consumption per Screen Technology</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="stats-grid">
-            <div class="card highlight-card">
-                <h3>Understand Ratings</h3>
-                <p>Learn what the star ratings really mean for your electricity bill and long-term savings.</p>
-            </div>
-            <div class="card">
-                <h3>Save Money</h3>
-                <p>Choosing efficient appliances can save hundreds of dollars a year on energy costs.</p>
-            </div>
-            <div class="card">
-                <h3>Reduce Carbon Footprint</h3>
-                <p>Energy-efficient appliances help lower greenhouse gas emissions and protect the environment.</p>
+
+        <!-- ================= PAGE 2: TELEVISIONS ================= -->
+        <div id="page-tv" class="page-section" style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Television Energy Consumption Comparison</h1>
+                    <p>
+                        Annual energy use (kWh/year) for common TV types in Australia<br />
+                        (based on typical values from energyrating.gov.au — 10 hours/day usage)
+                    </p>
+                </div>
+
+                <!-- Container chứa dữ liệu từ JS -->
+                <div id="tv-data-list" class="data-container"></div>
+
+                <div class="tips-section">
+                    <h2>Tips to Reduce TV Energy Consumption</h2>
+                    <ul>
+                        <li>Choose 6+ star rated TVs for optimal efficiency</li>
+                        <li>Utilize Eco/Energy Saving mode when available</li>
+                        <li>Adjust brightness to match ambient lighting</li>
+                        <li>Enable automatic sleep/standby timers</li>
+                        <li>Turn off completely when not in use (avoid standby power)</li>
+                        <li>Consider smaller screen sizes if space allows</li>
+                        <li>Unplug peripherals when not in use</li>
+                        <li>Choose LED over OLED or Plasma for energy savings</li>
+                        <li>Reduce screen brightness by 20-30% when possible</li>
+                        <li>Use smart power strips to eliminate phantom loads</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+
+        <!-- ================= PAGE 3: ABOUT US ================= -->
+        <div id="page-about" class="page-section" style="display: none;">
+            <section class="about-hero">
+                <div class="container">
+                    <h1>About EcoEnergy</h1>
+                    <p>Empowering Australian households to make smarter, greener energy choices through data-driven insights</p>
+                </div>
+            </section>
+
+            <section class="mission-section section-padding">
+                <div class="container">
+                    <div class="mission-box">
+                        <h2>Our Mission</h2>
+                        <p>We believe that informed consumers can make a real difference. By providing clear, accessible data on appliance energy consumption, we help Australians reduce their electricity bills while contributing to a more sustainable future. Every smart choice counts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features-section section-padding">
+                <div class="container">
+                    <h2 class="section-title">What We Offer</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>Project Purpose</h3>
+                            <p>This website serves as an educational tool for Australian consumers to understand and compare energy consumption across household appliances, with detailed focus on televisions.</p>
+                            <p style="margin-top: 1rem;">Make informed purchasing decisions that save money and reduce environmental impact.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3>Data Sources</h3>
+                            <p>All information is sourced from official Australian government resources:</p>
+                            <ul style="margin-top: 1rem;">
+                                <li>Energy Rating Database</li>
+                                <li><a href="https://reg.energyrating.gov.au/comparator/product_types/" target="_blank">energyrating.gov.au</a></li>
+                                <li>Government verified data</li>
+                                <li>Regularly updated information</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3>Technologies</h3>
+                            <ul>
+                                <li>HTML5 & CSS3 (Responsive Design)</li>
+                                <li>JavaScript & PapaParse</li>
+                                <li>KNIME Analytics Platform</li>
+                                <li>GitHub for deployment</li>
+                                <li>Modern web standards</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="author-section section-padding">
+                <div class="container">
+                    <div class="author-container">
+                        <div class="author-avatar">👨‍🎓</div>
+                        <h2>Student Information</h2>
+                        <div class="author-info-grid">
+                            <div class="info-item"><strong>Name</strong><span>Do Duc Duy</span></div>
+                            <div class="info-item"><strong>Student ID</strong><span>105550034</span></div>
+                            <div class="info-item"><strong>Course</strong><span>COS30045</span></div>
+                            <div class="info-item"><strong>Subject</strong><span>Data Visualisation</span></div>
+                            <div class="info-item"><strong>Project</strong><span>Demonstration 1</span></div>
+                            <div class="info-item"><strong>Year</strong><span>2026</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="acknowledgment-section section-padding">
+                <div class="container">
+                    <div class="acknowledgment-box">
+                        <h2>Acknowledgements</h2>
+                        <p>This project was developed with assistance from GenAI tools including GitHub Copilot for code generation, structure optimization, and debugging support.</p>
+                        <p>All data is sourced from publicly available Australian government resources. This is a non-commercial educational project created for learning purposes.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>© <span id="year"></span> <strong>2026 Do Duc Duy - 105550034</strong></p>
+                <p>© <strong>2026 Do Duc Duy - 105550034</strong></p>
                 <p class="small-text">Acknowledgement: GenAI tools assisted in generating code structure and content.</p>
             </div>
         </div>
