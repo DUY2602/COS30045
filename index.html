@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoEnergy - Smarter Energy for Australia</title>
+    <title>EcoEnergy</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Thư viện PapaParse để đọc file CSV -->
+    
+    <!-- PapaParse to read file CSV -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
 <body>
@@ -17,7 +18,7 @@
         </div>
         <nav>
             <ul>
-                <!-- Dùng onclick thay vì href -->
+                <!-- Use onClick to call JS function -->
                 <li><a href="#" id="nav-home" onclick="switchPage('home')" class="active">Home</a></li>
                 <li><a href="#" id="nav-tv" onclick="switchPage('tv')">Televisions</a></li>
                 <li><a href="#" id="nav-about" onclick="switchPage('about')">About Us</a></li>
@@ -31,10 +32,10 @@
             <section class="hero section-padding">
                 <div class="container">
                     <h1>Smarter Energy for <span class="highlight">Televisions</span></h1>
-                    <p class="hero-text">Track appliance efficiency, save money, and reduce your carbon footprint with informed choices.</p>
+                    <p class="hero-text">Get to know efficient TV technologies to save money and energy.</p>
                     <div style="text-align: center; margin-top: 2rem;">
-                        <!-- Nút này cũng gọi hàm chuyển trang -->
-                        <button onclick="switchPage('tv')" class="cta-btn" style="border:none; cursor:pointer;">View Appliance Data</button>
+                        
+                        <button onclick="switchPage('tv')" class="cta-btn" style="border:none; cursor:pointer;">View Data</button>
                     </div>
                 </div>
             </section>
@@ -43,7 +44,7 @@
                 <div class="container">
                     <div class="section-header">
                         <h2>Why Energy Efficiency Matters</h2>
-                        <p>Making informed choices about appliances can lead to significant savings and environmental benefits</p>
+                        <p>Making informed choices can lead to significant savings and environmental benefits</p>
                     </div>
                     <div class="stats-grid">
                         <div class="card highlight-card">
@@ -98,15 +99,19 @@
         <div id="page-tv" class="page-section" style="display: none;">
             <div class="container">
                 <div class="section-header">
-                    <h1>Television Energy Consumption Comparison</h1>
+                    <h1>Television Statistics Comparison</h1>
                     <p>
-                        Annual energy use (kWh/year) for common TV types in Australia<br />
-                        (based on typical values from energyrating.gov.au — 10 hours/day usage)
+                        Annual cost for energy use (kWh/year) among common TV types<br />
+                        (based on typical data from <a href="https://reg.energyrating.gov.au/comparator/product_types/" target="_blank">energyrating.gov.au</a>)
                     </p>
                 </div>
 
                 <!-- Container chứa dữ liệu từ JS -->
                 <div id="tv-data-list" class="data-container"></div>
+
+                <div id="show-more-container" style="text-align: center; margin-top: 2rem;">
+                    <button id="load-more-btn" class="cta-btn" style="border:none; cursor:pointer;">Show More Televisions</button>
+                </div>
 
                 <div class="tips-section">
                     <h2>Tips to Reduce TV Energy Consumption</h2>
@@ -118,7 +123,7 @@
                         <li>Turn off completely when not in use (avoid standby power)</li>
                         <li>Consider smaller screen sizes if space allows</li>
                         <li>Unplug peripherals when not in use</li>
-                        <li>Choose LED over OLED or Plasma for energy savings</li>
+                        <li>Choose suitable screen technology for energy savings</li>
                         <li>Reduce screen brightness by 20-30% when possible</li>
                         <li>Use smart power strips to eliminate phantom loads</li>
                     </ul>
@@ -139,7 +144,7 @@
                 <div class="container">
                     <div class="mission-box">
                         <h2>Our Mission</h2>
-                        <p>We believe that informed consumers can make a real difference. By providing clear, accessible data on appliance energy consumption, we help Australians reduce their electricity bills while contributing to a more sustainable future. Every smart choice counts.</p>
+                        <p>We believe that informed consumers can make a real difference. By providing clear, accessible data on energy consumption, we help consumers reduce their electricity bills while meeting the televisions efficiency demand.</p>
                     </div>
                 </div>
             </section>
@@ -150,7 +155,7 @@
                     <div class="features-grid">
                         <div class="feature-card">
                             <h3>Project Purpose</h3>
-                            <p>This website serves as an educational tool for Australian consumers to understand and compare energy consumption across household appliances, with detailed focus on televisions.</p>
+                            <p>This website serves as an educational tool for consumers to understand and compare energy consumption across televisions, with detailed analytics.</p>
                             <p style="margin-top: 1rem;">Make informed purchasing decisions that save money and reduce environmental impact.</p>
                         </div>
 
@@ -172,7 +177,6 @@
                                 <li>JavaScript & PapaParse</li>
                                 <li>KNIME Analytics Platform</li>
                                 <li>GitHub for deployment</li>
-                                <li>Modern web standards</li>
                             </ul>
                         </div>
                     </div>
@@ -200,8 +204,7 @@
                 <div class="container">
                     <div class="acknowledgment-box">
                         <h2>Acknowledgements</h2>
-                        <p>This project was developed with assistance from GenAI tools including GitHub Copilot for code generation, structure optimization, and debugging support.</p>
-                        <p>All data is sourced from publicly available Australian government resources. This is a non-commercial educational project created for learning purposes.</p>
+                        <p>This project was developed with assistance from GenAI tools including GitHub Copilot for code generation for CSS styling and debugging support.</p>
                     </div>
                 </div>
             </section>
@@ -212,7 +215,7 @@
         <div class="container">
             <div class="footer-content">
                 <p>© <strong>2026 Do Duc Duy - 105550034</strong></p>
-                <p class="small-text">Acknowledgement: GenAI tools assisted in generating code structure and content.</p>
+                <p class="small-text">Acknowledgement: GenAI tools assisted in generating CSS code and JS debugging.</p>
             </div>
         </div>
     </footer>

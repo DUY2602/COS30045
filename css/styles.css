@@ -22,7 +22,7 @@ body {
 
 /* Layout */
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-main { min-height: calc(100vh - 200px); padding: 2rem 0; max-width: 1260px; margin: 0 auto; }
+main { min-height: calc(100vh - 200px); max-width: 1260px; margin: 0 auto; }
 .section-padding { padding: 3rem 0; }
 
 /* Header */
