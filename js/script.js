@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
             `;
-      // Use appendChild to add new data rows without clearing the old ones
       container.appendChild(card);
     });
 
@@ -107,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// === NAVIGATION LOGIC (SPA) ===
+// === NAVIGATION LOGIC ===
 function switchPage(pageName) {
   // 1. Hide all page sections
   const pages = document.querySelectorAll(".page-section");
