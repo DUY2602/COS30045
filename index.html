@@ -76,7 +76,7 @@
                                 <p><strong>Current Available Screen Technologies in Australia</strong></p>
                             </div>
                             <div class="chart-item">
-                                <img src="images/charts/Relationship between Screen Size & Power Usage.png" alt="Chart 2" class="key-chart">
+                                <img src="images/charts/Relationship between Screen Size & Power Usage .png" alt="Chart 2" class="key-chart">
                                 <p><strong>Relationship between Screen Size & Power Usage</strong></p>
                             </div>
                         </div>
@@ -104,30 +104,6 @@
                         Annual cost for energy use (kWh/year) among common TV types<br />
                         (based on typical data from <a href="https://reg.energyrating.gov.au/comparator/product_types/" target="_blank">energyrating.gov.au</a>)
                     </p>
-                </div>
-        </div>
-
-                <!-- Container chứa dữ liệu từ JS -->
-                <div id="tv-data-list" class="data-container"></div>
-
-                <div id="show-more-container" style="text-align: center; margin-top: 2rem;">
-                    <button id="load-more-btn" class="cta-btn" style="border:none; cursor:pointer;">Show More Televisions</button>
-                </div>
-
-                <div class="tips-section">
-                    <h2>Tips to Reduce TV Energy Consumption</h2>
-                    <ul>
-                        <li>Choose 6+ star rated TVs for optimal efficiency</li>
-                        <li>Utilize Eco/Energy Saving mode when available</li>
-                        <li>Adjust brightness to match ambient lighting</li>
-                        <li>Enable automatic sleep/standby timers</li>
-                        <li>Turn off completely when not in use (avoid standby power)</li>
-                        <li>Consider smaller screen sizes if space allows</li>
-                        <li>Unplug peripherals when not in use</li>
-                        <li>Choose suitable screen technology for energy savings</li>
-                        <li>Reduce screen brightness by 20-30% when possible</li>
-                        <li>Use smart power strips to eliminate phantom loads</li>
-                    </ul>
                 </div>
 
                 <section class="section-padding" style="padding-top: 0;">
@@ -177,13 +153,67 @@
                                 </h3>
                                 <p style="font-size: 1.05rem; line-height: 1.6; border-left: 4px solid var(--accent); padding-left: 15px;">
                                     View the groups of LG's LCD (LED) Screen size based on popularity and rating <br>
-                                    <strong>=> Winner: NORMAL (50 - 70)</strong>
+                                    <strong>=> Winner: LARGE (71" - 80")</strong>
                                 </p>
                             </div>
                         </div>
 
                     </div>
                 </section>
+
+                <div class="filter-bar" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px;">
+                    <select id="filter-brand" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; min-width: 150px;">
+                        <option value="">All Brands</option>
+                    </select>
+
+                    <select id="filter-tech" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; min-width: 150px;">
+                        <option value="">Screen Technology</option>
+                    </select>
+
+                    <select id="filter-size" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; min-width: 150px;">
+                        <option value="">Screen Size (All)</option>
+                        <option value="giant">Giant (> 120")</option>
+                        <option value="ultra-huge">Ultra-huge (111" - 120")</option>
+                        <option value="super-huge">Super-huge (101" - 110")</option>
+                        <option value="huge">Huge (91" - 100")</option>
+                        <option value="x-large">X-large (81" - 90")</option>
+                        <option value="large">Large (71" - 80")</option>
+                        <option value="medium-large">Medium-large (61" - 70")</option>
+                        <option value="medium">Medium (51" - 60")</option>
+                        <option value="medium-small">Medium-small (41" - 50")</option>
+                        <option value="small">Small (31" - 40")</option>
+                        <option value="very-small">Very-small (21" - 30")</option>
+                        <option value="tiny">Tiny (11" - 20")</option>
+                    </select>
+
+                    <button id="btn-filter" class="cta-btn" style="border:none; cursor:pointer; padding: 10px 25px;">Filter</button>
+                </div>
+        </div>
+
+                <!-- TV data container from JS -->
+                <div id="tv-data-list" class="data-container">
+                    
+                </div>
+
+                <div id="show-more-container" style="text-align: center; margin-top: 2rem;">
+                    <button id="load-more-btn" class="cta-btn" style="border:none; cursor:pointer;">Show More Televisions</button>
+                </div>
+
+                <div class="tips-section">
+                    <h2>Tips to Reduce TV Energy Consumption</h2>
+                    <ul>
+                        <li>Choose 6+ star rated TVs for optimal efficiency</li>
+                        <li>Utilize Eco/Energy Saving mode when available</li>
+                        <li>Adjust brightness to match ambient lighting</li>
+                        <li>Enable automatic sleep/standby timers</li>
+                        <li>Turn off completely when not in use (avoid standby power)</li>
+                        <li>Consider smaller screen sizes if space allows</li>
+                        <li>Unplug peripherals when not in use</li>
+                        <li>Choose suitable screen technology for energy savings</li>
+                        <li>Reduce screen brightness by 20-30% when possible</li>
+                        <li>Use smart power strips to eliminate phantom loads</li>
+                    </ul>
+                </div>
             </div>
         </div>
 

@@ -3,41 +3,106 @@ document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("tv-data-list");
   const loadMoreBtn = document.getElementById("load-more-btn");
 
-  // Store full data from CSV
-  let allTVData = [];
+  // Initialize filter variables
+  const brandSelect = document.getElementById("filter-brand");
+  const techSelect = document.getElementById("filter-tech");
+  const sizeSelect = document.getElementById("filter-size");
+  const filterBtn = document.getElementById("btn-filter");
 
-  // Current position in the data array
+  let allTVData = []; // All raw data
+  let filteredData = []; // Data after filtering
   let currentIndex = 0;
-
-  // Shows 12 TV per click
   const itemsPerPage = 12;
 
-  // Parse data file then store it and display the first batch
   Papa.parse(csvUrl, {
     download: true,
     header: true,
     dynamicTyping: true,
+    skipEmptyLines: true,
     complete: function (results) {
-      allTVData = results.data;
+      // Only get records from a particular Brand
+      allTVData = results.data.filter((item) => item.Brand_Reg);
 
-      // Display the first 12 items immediately
-      displayNextBatch();
+      // Auto Dropdown creation
+      setupDropdowns();
+
+      // Show the raw data first
+      applyFilters();
     },
   });
 
-  // Function to slice next 12 items and append to current list
+  function setupDropdowns() {
+    // Get a list of Brands
+    const brands = [...new Set(allTVData.map((item) => item.Brand_Reg))].sort();
+    brands.forEach((b) => {
+      brandSelect.innerHTML += `<option value="${b}">${b}</option>`;
+    });
+
+    // Get a list of ScreenTech
+    const techs = [
+      ...new Set(allTVData.map((item) => item.Screen_Tech)),
+    ].sort();
+    techs.forEach((t) => {
+      techSelect.innerHTML += `<option value="${t}">${t}</option>`;
+    });
+  }
+
+  function getSizeGroup(inchValue) {
+    const size = parseFloat(inchValue);
+    if (isNaN(size)) return "";
+
+    if (size > 120) return "giant";
+    if (size > 110) return "ultra-huge";
+    if (size > 100) return "super-huge";
+    if (size > 90) return "huge";
+    if (size > 80) return "x-large";
+    if (size > 70) return "large";
+    if (size > 60) return "medium-large";
+    if (size > 50) return "medium";
+    if (size > 40) return "medium-small";
+    if (size > 30) return "small";
+    if (size > 20) return "very-small";
+    if (size > 10) return "tiny";
+    return "mini";
+  }
+
+  // Core function for filtering
+  function applyFilters() {
+    const brandVal = document.getElementById("filter-brand").value;
+    const techVal = document.getElementById("filter-tech").value;
+    const sizeGroupVal = document.getElementById("filter-size").value;
+
+    filteredData = allTVData.filter((tv) => {
+      const matchBrand = !brandVal || tv.Brand_Reg === brandVal;
+      const matchTech = !techVal || tv.Screen_Tech === techVal;
+
+      // Filter the new size group
+      const currentSizeGroup = getSizeGroup(tv.Screensize_inch);
+      const matchSize = !sizeGroupVal || currentSizeGroup === sizeGroupVal;
+
+      return matchBrand && matchTech && matchSize;
+    });
+
+    // Sort by Star2
+    filteredData.sort(
+      (a, b) => (parseFloat(b.Star2) || 0) - (parseFloat(a.Star2) || 0),
+    );
+
+    currentIndex = 0;
+    container.innerHTML = "";
+    displayNextBatch();
+  }
+
   function displayNextBatch() {
     if (!container) return;
 
-    // Get the next slice of data (12 items) from the current index
-    const nextSlice = allTVData.slice(
+    const nextSlice = filteredData.slice(
       currentIndex,
-      currentIndex + itemsPerPage
+      currentIndex + itemsPerPage,
     );
 
-    // Loop through the slice and create HTML elements
     nextSlice.forEach((tv) => {
-      const starValue = parseFloat(tv.Star) || 0;
+      const starValue = parseFloat(tv.Star2) || 0;
       let statusClass =
         starValue >= 8 ? "Good" : starValue >= 5 ? "Medium" : "Poor";
 
@@ -46,19 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
       card.innerHTML = `
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span>${tv.Brand_Reg} ${tv.Model_No}</span>
+                        <span><strong>${tv.Brand_Reg}</strong> ${tv.Model_No}</span>
                         <div class="badge ${statusClass}">${statusClass}</div>
                     </div>
                 </div>
                 <div class="card-body">
                     <p><strong>Size:</strong> ${tv.Screensize_inch} inches</p>
                     <p><strong>Technology:</strong> ${tv.Screen_Tech}</p>
-                    <p><strong>Energy Use:</strong> ${
-                      tv["Labelled energy consumption (kWh/year)"]
-                    } kWh/year</p>
-                    <p><strong>Cost Est:</strong> $${(
-                      tv["Labelled energy consumption (kWh/year)"] * 0.3
-                    ).toFixed(2)} /year</p>
+                    <p><strong>Energy Use:</strong> ${tv["Labelled energy consumption (kWh/year)"]} kWh/year</p>
+                    <p><strong>Cost Est:</strong> $${(tv["Labelled energy consumption (kWh/year)"] * 0.3).toFixed(2)} /year</p>
                     <div class="star-rating-display" style="font-size: 1.5rem; margin: 10px 0;">
                         ${generateStars(starValue)}
                     </div>
@@ -67,41 +128,27 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(card);
     });
 
-    // Update the index for the next "Show More" click
     currentIndex += itemsPerPage;
-
-    // Hide the "Show More" button if no more data is available
-    if (currentIndex >= allTVData.length && loadMoreBtn) {
-      loadMoreBtn.style.display = "none";
+    if (loadMoreBtn) {
+      loadMoreBtn.style.display =
+        currentIndex >= filteredData.length ? "none" : "block";
     }
   }
 
-  // Handle "Show More" button click
-  if (loadMoreBtn) {
-    loadMoreBtn.addEventListener("click", displayNextBatch);
-  }
+  // Add Event Listener
+  if (filterBtn) filterBtn.addEventListener("click", applyFilters);
+  if (loadMoreBtn) loadMoreBtn.addEventListener("click", displayNextBatch);
 
-  // Function to generate star rating HTML based on value
   function generateStars(rating) {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
     let starsHtml = "";
-
-    // Add full stars
-    for (let i = 0; i < fullStars; i++) {
+    for (let i = 0; i < fullStars; i++)
       starsHtml += '<span style="color: #FFD700;">★</span>';
-    }
-
-    // Add half star if applicable
-    if (hasHalfStar) {
-      starsHtml += '<span style="color: #FFD700;">⯪</span>';
-    }
-
-    // Add empty stars for the remainder
+    if (hasHalfStar) starsHtml += '<span style="color: #FFD700;">⯪</span>';
     const emptyStars = 10 - Math.ceil(rating);
-    for (let i = 0; i < emptyStars; i++) {
+    for (let i = 0; i < emptyStars; i++)
       starsHtml += '<span style="color: #ccc;">☆</span>';
-    }
     return starsHtml;
   }
 });
