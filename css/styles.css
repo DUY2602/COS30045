@@ -219,3 +219,13 @@ footer { background: var(--secondary); padding: 1.6rem; margin-top: 5.5rem; text
   .data-container, .stats-grid, .about-content, .features-grid, .chart-row, .author-info-grid { grid-template-columns: 1fr; }
   .logo-container span { font-size: 1.8rem; }
 }
+
+
+
+/* EXERCISE 4 STYLING */
+.responsive-svg-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 1200px;
+}
