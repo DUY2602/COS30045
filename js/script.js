@@ -192,7 +192,7 @@ const svg = d3
   .attr("viewBox", "0 0 1100 500")
   .style("border", "1px solid black");
 
-d3.csv("../data/data_ex_4.csv", (data) => {
+d3.csv("./data/data_ex_4.csv", (data) => {
   return {
     brand: data.Brand_Reg,
     count: +data.Count,
