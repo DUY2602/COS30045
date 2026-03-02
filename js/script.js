@@ -184,27 +184,26 @@ function switchPage(pageName) {
 
 
 
-
-// EXERCISE 4 SCRIPT
+// EXERCISE 4 SCRIPT 
 const svg = d3
   .select(".responsive-svg-container")
   .append("svg")
   .attr("viewBox", "0 0 1100 500")
   .style("border", "1px solid black");
 
-d3.csv("./data/data_ex_4.csv", (data) => {
-  return {
-    brand: data.Brand_Reg,
-    count: +data.Count,
-  };
-}).then((data) => {
-  console.log(data.sort((a, b) => b.count - a.count));
-  console.log(data.length);
-  console.log(d3.max(data, (d) => d.count));
-  console.log(d3.min(data, (d) => d.count));
-  console.log(d3.extent(data, (d) => d.count)); //=> array with min and max
+d3.csv("data/data_ex_4.csv").then((rawData) => {
+  const data = rawData.map(d => ({
+    brand: d.Brand_Reg || "Unknown",
+    count: +d.Count || 0
+  })).filter(d => d.count > 0); 
 
-  createBarChart(data);
+  console.log("Data loaded:", data.sort((a, b) => b.count - a.count)); 
+
+  if (data.length > 0) {
+    createBarChart(data);
+  } else {
+    console.error("Dữ liệu sau khi load bị rỗng!");
+  }
 });
 
 const createBarChart = (data) => {
