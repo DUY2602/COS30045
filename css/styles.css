@@ -221,11 +221,57 @@ footer { background: var(--secondary); padding: 1.6rem; margin-top: 5.5rem; text
 }
 
 
-
 /* EXERCISE 4 STYLING */
 .responsive-svg-container {
     margin-right: auto;
     margin-left: auto;
     width: 100%;
     max-width: 1200px;
+}
+
+
+/* Layout lưới cho các biểu đồ Exercise 5 */
+.exercise-five-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Chia làm 2 cột bằng nhau */
+    gap: 25px; /* Khoảng cách giữa các biểu đồ */
+    margin: 2rem 0;
+}
+
+/* Khung card bao quanh mỗi biểu đồ */
+.chart-container-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--glow);
+    box-shadow: 0 5px 18px rgba(141, 85, 36, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa nội dung bên trong */
+}
+
+.chart-container-card h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+    width: 100%;
+}
+
+/* Đảm bảo SVG co giãn theo khung card */
+.responsive-five-one, 
+.responsive-five-two, 
+.responsive-five-three, 
+.responsive-five-four {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Mobile: Chuyển về 1 cột khi màn hình nhỏ */
+@media (max-width: 992px) {
+    .exercise-five-grid {
+        grid-template-columns: 1fr;
+    }
 }

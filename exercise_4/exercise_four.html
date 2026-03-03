@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoEnergy</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- PapaParse to read file CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container" onclick="switchPage('home')">
+            <img src="../images/power-logo.png" alt="Power Logo" class="logo">
+            <span>EcoEnergy</span>
+        </div>
+        <nav>
+            <ul>
+                <!-- Use onClick to call JS function -->
+                <li><a href="../index.html" id="nav-home" onclick="switchPage('home')" >Home</a></li>
+                <li><a href="../index.html?target=tv" id="nav-tv" onclick="switchPage('tv')">Televisions</a></li>
+                <li><a href="../index.html?target=about" id="nav-about" onclick="switchPage('about')">About Us</a></li>
+                <li><a href="exercise_four.html" id="nav-exercise-4" onclick="switchPage('exercise-4')" class="active">EXERCISE 4</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+      <h1>My SVG House</h1>
+
+      <svg width="400" height="320" viewBox="0 0 400 320">
+        <!-- Background sky -->
+        <rect x="0" y="0" width="400" height="320" fill="#e0f7ff" />
+
+        <!-- Sun -->
+        <circle
+          cx="340"
+          cy="60"
+          r="30"
+          fill="yellow"
+          stroke="orange"
+          stroke-width="4"
+        />
+
+        <!-- Grass / garden ground -->
+        <rect x="0" y="220" width="400" height="100" fill="#7cfc00" />
+
+        <!-- ============= GROUP: House ============= -->
+        <g id="house" transform="translate(120, 100)">
+          <!-- House body -->
+          <rect
+            x="0"
+            y="40"
+            width="160"
+            height="120"
+            fill="#f4a460"
+            stroke="#8b4513"
+            stroke-width="5"
+          />
+
+          <!-- Roof -->
+          <polygon
+            points="0,40 80,0 160,40"
+            fill="#cd5c5c"
+            stroke="#8b0000"
+            stroke-width="5"
+          />
+
+          <!-- Door -->
+          <rect
+            x="60"
+            y="100"
+            width="40"
+            height="60"
+            fill="#8b5a2b"
+            stroke="#3c2f2f"
+            stroke-width="3"
+          />
+          <circle cx="92" cy="130" r="5" fill="#d4a017" />
+
+          <!-- Window 1 -->
+          <g transform="translate(20, 70)">
+            <rect
+              width="40"
+              height="40"
+              fill="#87ceeb"
+              stroke="#4682b4"
+              stroke-width="3"
+            />
+            <line
+              x1="0"
+              y1="20"
+              x2="40"
+              y2="20"
+              stroke="#4682b4"
+              stroke-width="3"
+            />
+            <line
+              x1="20"
+              y1="0"
+              x2="20"
+              y2="40"
+              stroke="#4682b4"
+              stroke-width="3"
+            />
+          </g>
+
+          <!-- Window 2 -->
+          <g transform="translate(100, 70)">
+            <rect
+              width="40"
+              height="40"
+              fill="#87ceeb"
+              stroke="#4682b4"
+              stroke-width="3"
+            />
+            <line
+              x1="0"
+              y1="20"
+              x2="40"
+              y2="20"
+              stroke="#4682b4"
+              stroke-width="3"
+            />
+            <line
+              x1="20"
+              y1="0"
+              x2="20"
+              y2="40"
+              stroke="#4682b4"
+              stroke-width="3"
+            />
+          </g>
+
+          <!-- Chimney -->
+          <rect
+            x="110"
+            y="10"
+            width="20"
+            height="35"
+            fill="#808080"
+            stroke="#555"
+            stroke-width="3"
+          />
+        </g>
+
+        <!-- ============= Garden elements ============= -->
+
+        <!-- Tree -->
+        <g transform="translate(60, 175)">
+          <rect x="-10" y="0" width="20" height="65" fill="#8b4513" />
+          <ellipse cx="0" cy="-15" rx="45" ry="32" fill="#228b22" />
+          <ellipse cx="-8" cy="-28" rx="35" ry="28" fill="#32cd32" />
+          <ellipse cx="10" cy="-22" rx="32" ry="25" fill="#3cb371" />
+        </g>
+
+        <!-- Flower 1 -->
+        <g transform="translate(60, 250)">
+          <ellipse cx="0" cy="0" rx="18" ry="28" fill="#ff69b4" opacity="0.9" />
+          <ellipse cx="0" cy="0" rx="28" ry="18" fill="#ff1493" opacity="0.8" />
+          <circle cx="0" cy="0" r="10" fill="#ffff00" />
+        </g>
+
+        <!-- Flower 2 -->
+        <g transform="translate(340, 245)">
+          <ellipse cx="0" cy="0" rx="22" ry="32" fill="#dda0dd" />
+          <circle cx="0" cy="0" r="12" fill="#fffacd" />
+        </g>
+      </svg>
+    </div>
+
+    
+    <div class="responsive-svg-container"></div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="exercise_four.js"></script>
+  </body>
+</html>

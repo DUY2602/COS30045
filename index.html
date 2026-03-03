@@ -22,7 +22,7 @@
                 <li><a href="#" id="nav-home" onclick="switchPage('home')" class="active">Home</a></li>
                 <li><a href="#" id="nav-tv" onclick="switchPage('tv')">Televisions</a></li>
                 <li><a href="#" id="nav-about" onclick="switchPage('about')">About Us</a></li>
-                <li><a href="#" id="nav-exercise-4" onclick="switchPage('exercise-4')">EXERCISE 4</a></li>
+                <li><a href="exercise_4/exercise_four.html" id="nav-exercise-4" onclick="switchPage('exercise-4')">EXERCISE 4</a></li>
             </ul>
         </nav>
     </header>
@@ -70,26 +70,25 @@
                         <h2>4 Key Visual Insights from KNIME</h2>
                         <p>Selected charts exported from the workflow (COS30045 Exercise 1):</p>
                     </div>
-                    <div class="key-charts-grid">
-                        <div class="chart-row">
-                            <div class="chart-item">
-                                <img src="images/charts/Current Available Screen Technologies in Australia.png" alt="Chart 1" class="key-chart">
-                                <p><strong>Current Available Screen Technologies in Australia</strong></p>
-                            </div>
-                            <div class="chart-item">
-                                <img src="images/charts/Relationship between Screen Size & Power Usage .png" alt="Chart 2" class="key-chart">
-                                <p><strong>Relationship between Screen Size & Power Usage</strong></p>
-                            </div>
+                    <div class="exercise-five-grid">
+                        <div class="chart-container-card">
+                            <h3>Relationship: Size vs Power</h3>
+                            <div class="responsive-five-one"></div>
                         </div>
-                        <div class="chart-row">
-                            <div class="chart-item">
-                                <img src="images/charts/Models per Brand.png" alt="Chart 3" class="key-chart">
-                                <p><strong>Models per Brand</strong></p>
-                            </div>
-                            <div class="chart-item">
-                                <img src="images/charts/Mean Power Consumption per Screen Technology.png" alt="Chart 4" class="key-chart">
-                                <p><strong>Mean Power Consumption per Screen Technology</strong></p>
-                            </div>
+
+                        <div class="chart-container-card">
+                            <h3>Energy Consumption by Tech</h3>
+                            <div class="responsive-five-two"></div>
+                        </div>
+
+                        <div class="chart-container-card">
+                            <h3>Brand Distribution</h3>
+                            <div class="responsive-five-three"></div>
+                        </div>
+
+                        <div class="chart-container-card">
+                            <h3>Price Trends over Years</h3>
+                            <div class="responsive-five-four"></div>
                         </div>
                     </div>
                 </div>
@@ -294,85 +293,6 @@
                     </div>
                 </div>
             </section>
-        </div>
-
-        <!-- ================= PAGE 4: SVG HOUSE ================= -->
-         <div id="page-exercise-4" class="page-section" style="display: none;">
-            <div class="container">
-                <div class="responsive-svg-container"></div>
-            </div>
-
-            <div class="container">
-                <h1>My SVG House</h1>
-
-                <svg width="400" height="320" viewBox="0 0 400 320">
-
-                    <!-- Background sky -->
-                    <rect x="0" y="0" width="400" height="320" fill="#e0f7ff" />
-
-                    <!-- Sun -->
-                    <circle cx="340" cy="60" r="30" fill="yellow" stroke="orange" stroke-width="4"/>
-
-                    <!-- Grass / garden ground -->
-                    <rect x="0" y="220" width="400" height="100" fill="#7cfc00" />
-
-                    <!-- ============= GROUP: House ============= -->
-                    <g id="house" transform="translate(120, 100)">
-
-                    <!-- House body -->
-                    <rect x="0" y="40" width="160" height="120" fill="#f4a460" stroke="#8b4513" stroke-width="5"/>
-
-                    <!-- Roof -->
-                    <polygon points="0,40 80,0 160,40" fill="#cd5c5c" stroke="#8b0000" stroke-width="5"/>
-
-                    <!-- Door -->
-                    <rect x="60" y="100" width="40" height="60" fill="#8b5a2b" stroke="#3c2f2f" stroke-width="3"/>
-                    <circle cx="92" cy="130" r="5" fill="#d4a017"/>
-
-                    <!-- Window 1 -->
-                    <g transform="translate(20, 70)">
-                        <rect width="40" height="40" fill="#87ceeb" stroke="#4682b4" stroke-width="3"/>
-                        <line x1="0" y1="20" x2="40" y2="20" stroke="#4682b4" stroke-width="3"/>
-                        <line x1="20" y1="0" x2="20" y2="40" stroke="#4682b4" stroke-width="3"/>
-                    </g>
-
-                    <!-- Window 2 -->
-                    <g transform="translate(100, 70)">
-                        <rect width="40" height="40" fill="#87ceeb" stroke="#4682b4" stroke-width="3"/>
-                        <line x1="0" y1="20" x2="40" y2="20" stroke="#4682b4" stroke-width="3"/>
-                        <line x1="20" y1="0" x2="20" y2="40" stroke="#4682b4" stroke-width="3"/>
-                    </g>
-
-                    <!-- Chimney -->
-                    <rect x="110" y="10" width="20" height="35" fill="#808080" stroke="#555" stroke-width="3"/>
-
-                    </g>
-
-                    <!-- ============= Garden elements ============= -->
-
-                    <!-- Tree -->
-                    <g transform="translate(60, 175)">
-                    <rect x="-10" y="0" width="20" height="65" fill="#8b4513"/>
-                    <ellipse cx="0" cy="-15" rx="45" ry="32" fill="#228b22"/>
-                    <ellipse cx="-8" cy="-28" rx="35" ry="28" fill="#32cd32"/>
-                    <ellipse cx="10" cy="-22" rx="32" ry="25" fill="#3cb371"/>
-                    </g>
-
-                    <!-- Flower 1 -->
-                    <g transform="translate(60, 250)">
-                    <ellipse cx="0" cy="0" rx="18" ry="28" fill="#ff69b4" opacity="0.9"/>
-                    <ellipse cx="0" cy="0" rx="28" ry="18" fill="#ff1493" opacity="0.8"/>
-                    <circle cx="0" cy="0" r="10" fill="#ffff00"/>
-                    </g>
-
-                    <!-- Flower 2 -->
-                    <g transform="translate(340, 245)">
-                    <ellipse cx="0" cy="0" rx="22" ry="32" fill="#dda0dd"/>
-                    <circle cx="0" cy="0" r="12" fill="#fffacd"/>
-                    </g>
-
-                </svg>
-            </div>
         </div>
     </main>
 
