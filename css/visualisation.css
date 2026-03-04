@@ -1,0 +1,57 @@
+/* css/visualisation.css */
+
+/* Container cho các bộ lọc */
+#filters_screen, #filters_size {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Style nút bấm sử dụng biến từ styles.css */
+#filters_screen button, #filters_size button {
+    padding: 10px 20px;
+    background-color: var(--bg-soft); /* Màu be nhạt */
+    color: var(--text-dark);
+    border: 1px solid var(--accent);
+    border-radius: 50px; /* Bo tròn theo style cta-btn */
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--glow);
+}
+
+#filters_screen button:hover, #filters_size button:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+}
+
+#filters_screen button.active, #filters_size button.active {
+    background-color: var(--primary); /* Màu nâu đậm */
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 6px 15px var(--glow);
+}
+
+/* Style cho Histogram Bars */
+.bar {
+    fill: var(--accent); /* Màu cam đất */
+    transition: fill 0.3s;
+}
+
+.bar:hover {
+    fill: var(--primary); /* Đổi màu khi hover */
+}
+
+/* Label trục */
+.axis-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    fill: var(--primary);
+}
+
+/* css/visualisation.css */
+#tooltip {
+    pointer-events: none; /* Chuột sẽ đi xuyên qua tooltip để tiếp tục chạm vào circle */
+}
