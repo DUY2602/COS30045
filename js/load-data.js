@@ -1,5 +1,5 @@
 // Load the CSV file with a row conversion function
-d3.csv("./data/Ex6_TVdata.csv", (d) => ({
+d3.csv("./data/data_ex_6.csv", (d) => ({
   brand: d.brand,
   model: d.model,
   screenSize: +d.screenSize, // Convert screenSize to a number
@@ -18,7 +18,7 @@ d3.csv("./data/Ex6_TVdata.csv", (d) => ({
 
     createTooltip();
     handleMouseEvents();
-  })
+})
   .catch((error) => {
     console.error("Error loading the CSV file:", error);
-  });
+});
