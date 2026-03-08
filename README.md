@@ -28,7 +28,8 @@ This project was developed with the assistance of **GitHub Copilot**, specifical
 
 * **🎨 UI/UX STYLING:** Assisting in writing and optimizing **CSS layouts**, and styling **contents**.
 * **🐞 DEBUGGING & ISSUE RESOLUTION:** Helping identify **logical errors in JavaScript** and providing efficient solutions for cross-browser compatibility issues.
-
+* **⚡ CODE EFFICIENCY:** Suggesting improvements for **code readability**, **performance optimization**, and **D3 JavaScript** practices.
+* **📚 DOCUMENTATION SUPPORT:** Assisting in generating README structure.
 > **NOTE:** Although GitHub Copilot provided code suggestions, **ALL LOGIC WAS REVIEWED AND TESTED** to ensure accuracy and strict compliance with project requirements.
 
 ---
