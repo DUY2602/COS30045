@@ -243,7 +243,7 @@ const createDonutChart = (data) => {
   // Sum to count %
   const total = d3.sum(data, (d) => d.star);
 
-  const radius = Math.min(innerW, innerH) / 2;
+  const radius = Math.min(innerW, innerH) / 2 + 50;
   const svg = d3
     .select(".responsive-five-two")
     .append("svg")
@@ -401,8 +401,6 @@ const createOnlyAveragePlot = (data) => {
     .attr("cy", (d) => y(d.avg))
     .attr("r", 4)
     .attr("fill", "#ff4500");
-
-  svg.append("g").call(d3.axisLeft(y));
 
   // LABEL X
   svg

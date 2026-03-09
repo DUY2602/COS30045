@@ -1,7 +1,7 @@
 // js/shared-constants.js
-const margin = { top: 40, right: 30, bottom: 60, left: 70 };
-const width = 1000;
-const height = 500;
+const margin = { top: 10, right: 30, bottom: 60, left: 70 };
+const width = 800;
+const height = 300;
 const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 
@@ -22,7 +22,7 @@ const yScaleS = d3.scaleLinear();
 
 const colorScale = d3.scaleOrdinal()
   .domain(["LCD", "LED", "OLED"])
-  .range(["#f7a758", "#7e511f", "#5a3413"]);
+  .range(["#fbc067", "#7b5122", "#101010"]);
 
   
 const filters_screen = [

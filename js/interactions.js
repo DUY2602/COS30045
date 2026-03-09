@@ -115,7 +115,7 @@ function handleMouseEvents() {
               .style("opacity", 1)
               .attr(
                 "transform",
-                `translate(${xScaleS(d.star) - tooltipWidth / 2}, ${yScaleS(d.energyConsumption) - tooltipHeight - 10})`,);        
+                `translate(${xScaleS(d.star) - tooltipWidth / 2}, ${yScaleS(d.energyConsumption) + 10})`,);        
               })
         .on("mouseleave", function() {
             // Hide tooltip when mouse leaves

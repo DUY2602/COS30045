@@ -54,4 +54,33 @@ function drawScatterplot(data) {
     .attr("text-anchor", "middle")
     .style("font-weight", "bold")
     .text("Energy Consumption (kWh/year)");
+
+  // === THÊM Ô CHÚ THÍCH (LEGEND) ===
+  const legend = svg
+    .append("g")
+    .attr("transform", `translate(${innerWidth - 100}, 10)`); // Đặt ở góc trên bên phải
+
+  const categories = colorScale.domain(); // Lấy ["LCD", "LED", "OLED"]
+
+  categories.forEach((tech, i) => {
+    const legendRow = legend
+      .append("g")
+      .attr("transform", `translate(0, ${i * 20})`); // Mỗi dòng cách nhau 20px
+
+    // Vẽ hình vuông màu
+    legendRow
+      .append("rect")
+      .attr("width", 12)
+      .attr("height", 12)
+      .attr("fill", colorScale(tech));
+
+    // Vẽ chữ tên công nghệ
+    legendRow
+      .append("text")
+      .attr("x", 20)
+      .attr("y", 10)
+      .style("font-size", "12px")
+      .style("text-transform", "capitalize")
+      .text(tech);
+  });
 }
