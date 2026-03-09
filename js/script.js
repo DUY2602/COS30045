@@ -206,7 +206,18 @@ const createScatterPlot = (data) => {
     .append("g")
     .attr("transform", `translate(0,${innerH})`)
     .call(d3.axisBottom(x));
+    
   svg.append("g").call(d3.axisLeft(y));
+
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - config5.margin.left)
+    .attr("x", 0 - innerH / 2)
+    .attr("dy", "1em")
+    .attr("text-anchor", "middle")
+    .style("font-weight", "bold")
+    .text("Energy Consumption (kWh)");
 
   svg
     .append("text")
@@ -228,6 +239,10 @@ d3.csv("./data/data_5_2.csv").then((data) => {
 
 const createDonutChart = (data) => {
   d3.select(".responsive-five-two").selectAll("*").remove();
+
+  // Sum to count %
+  const total = d3.sum(data, (d) => d.star);
+
   const radius = Math.min(innerW, innerH) / 2;
   const svg = d3
     .select(".responsive-five-two")
@@ -243,6 +258,7 @@ const createDonutChart = (data) => {
     .innerRadius(radius * 0.5)
     .outerRadius(radius);
 
+  // Donut slices
   svg
     .selectAll("path")
     .data(pie(data))
@@ -255,11 +271,20 @@ const createDonutChart = (data) => {
     .selectAll("text")
     .data(pie(data))
     .join("text")
-    .text((d) => d.data.tech)
     .attr("transform", (d) => `translate(${arc.centroid(d)})`)
     .style("text-anchor", "middle")
-    .style("font-size", "10px")
-    .style("font-weight", "bold");
+    .style("font-size", "11px")
+    .style("fill", "black")
+    .style("font-weight", "bold")
+    .selectAll("tspan")
+    .data((d) => [
+      d.data.tech,
+      ((d.data.star / total) * 100).toFixed(1) + "%", 
+    ])
+    .join("tspan")
+    .attr("x", 0)
+    .attr("dy", (d, i) => (i === 0 ? 0 : "1.2em"))
+    .text((d) => d);
 };
 
 // 5.3 BAR CHART
@@ -319,7 +344,7 @@ const createBarCharts = (data) => {
     .style("font-weight", "bold");
 };
 
-// 5.4 LINE CHART (SỬA LỖI TICK FORMAT)
+// 5.4 LINE CHART
 d3.csv("./data/data_5_4.csv").then((data) => {
   const formattedData = data.map((d) => ({
     year: +d.Year,
@@ -376,4 +401,25 @@ const createOnlyAveragePlot = (data) => {
     .attr("cy", (d) => y(d.avg))
     .attr("r", 4)
     .attr("fill", "#ff4500");
+
+  svg.append("g").call(d3.axisLeft(y));
+
+  // LABEL X
+  svg
+    .append("text")
+    .attr("x", innerW / 2)
+    .attr("y", innerH + 45)
+    .attr("text-anchor", "middle")
+    .style("font-weight", "bold")
+    .text("Year");
+
+  // LABEL Y
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - config5.margin.left + 20)
+    .attr("x", 0 - innerH / 2)
+    .attr("text-anchor", "middle")
+    .style("font-weight", "bold")
+    .text("Average Price ($)");
 };

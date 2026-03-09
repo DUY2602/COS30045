@@ -24,14 +24,34 @@ function drawScatterplot(data) {
     .attr("cx", (d) => xScaleS(d.star))
     .attr("cy", (d) => yScaleS(d.energyConsumption))
     .attr("r", 5)
-    .attr("fill", (d) => colorScale(d.screenTech)) // Use colorScale to color points depending on screenTech
-    .attr("opacity", 0.6); 
+    .attr("fill", (d) => colorScale(d.screenTech))
+    .attr("opacity", 0.6);
 
-  // Axis
+  // Axis Bottom
   svg
     .append("g")
     .attr("transform", `translate(0,${innerHeight})`)
     .call(d3.axisBottom(xScaleS));
 
+  // Label X
+  svg
+    .append("text")
+    .attr("x", innerWidth / 2)
+    .attr("y", innerHeight + 45)
+    .attr("text-anchor", "middle")
+    .style("font-weight", "bold")
+    .text("Star Rating (Stars)");
+
+  // Axis Left
   svg.append("g").call(d3.axisLeft(yScaleS));
+
+  // Label Y
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left + 20)
+    .attr("x", 0 - innerHeight / 2)
+    .attr("text-anchor", "middle")
+    .style("font-weight", "bold")
+    .text("Energy Consumption (kWh/year)");
 }

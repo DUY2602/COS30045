@@ -27,11 +27,31 @@ function drawHistogram(data) {
     .attr("height", (d) => innerHeight - yScale(d.length))
     .attr("fill", barColor);
 
-  // Axis
+  // Axis X
   svg
     .append("g")
     .attr("transform", `translate(0,${innerHeight})`)
     .call(d3.axisBottom(xScale));
 
+  // Label X
+  svg
+    .append("text")
+    .attr("x", innerWidth / 2)
+    .attr("y", innerHeight + 45)
+    .attr("text-anchor", "middle")
+    .style("font-weight", "bold")
+    .text("Energy Consumption (kWh)");
+
+  // Axis Y
   svg.append("g").attr("class", "y-axis").call(d3.axisLeft(yScale));
+
+  // Label Y
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left + 20)
+    .attr("x", 0 - innerHeight / 2)
+    .attr("text-anchor", "middle")
+    .style("font-weight", "bold")
+    .text("Number of Devices (Frequency)");
 }
